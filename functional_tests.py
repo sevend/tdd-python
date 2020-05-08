@@ -1,10 +1,5 @@
 from selenium import webdriver
 import unittest
-from django.test import TestCase
-
-class SmokeTest(TestCase):
-    def test_bad_maths(self):
-        self.assertEqual(1+1,3)
 
 class NewVisitorTest(unittest.TestCase):
 
@@ -12,7 +7,7 @@ class NewVisitorTest(unittest.TestCase):
         self.browser = webdriver.Firefox(executable_path=r'e:\workspace\tdd_python\geckodriver.exe')
         self.browser.implicitly_wait(3)
 
-    def setDown(self):
+    def tearDown(self):
         self.browser.quit()
 
     def test_can_start_a_list_and_retrieve_it_later(self):
@@ -21,7 +16,7 @@ class NewVisitorTest(unittest.TestCase):
         self.browser.get('http://localhost:8000')
 
         # 她注意到网页的标题和头部都包含 “ To-Do ” 这个词
-        self.assertIn('TO-DO', self.browser.title)
+        self.assertIn('To-Do', self.browser.title)
         self.fail('Finish the test')
 
         # 应用邀请她输入一个待办事项
