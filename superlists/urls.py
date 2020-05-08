@@ -22,5 +22,6 @@ urlpatterns = [
 
     url(r'^$', myapp_views.home_page),
     # path('admin/', admin.site.urls),
-
+    url(r'^lists/the-only-list-in-the-world/$', myapp_views.view_list),
+    
 ]

@@ -43,9 +43,10 @@ class NewVisitorTest(LiveServerTestCase):
         # 她按回车键后，被带到了一个新 URL
         # 这个页面的待办事项表格中显示了 “ 1: Buy peacock feathers ”
         inputbox.send_keys(Keys.ENTER)
+        time.sleep(1)
+
         edith_list_url= self.browser.current_url
         self.assertRegex(edith_list_url,'/lists/.+')
-        time.sleep(1)
 
         
         # 页面中又显示了一个文本框，可以输入其他的待办事项
@@ -66,26 +67,34 @@ class NewVisitorTest(LiveServerTestCase):
         ## 我们使用一个新浏览器会话
         ## 确保伊迪丝的信息不会从cookie中泄露出来 # ➊
         self.browser.quit()
-        self.browser = webdriver.Firefox()
+        self.browser = webdriver.Firefox(executable_path=r'e:\workspace\tdd_python\geckodriver.exe')
+
         # 弗朗西斯访问首页
         # 页面中看不到伊迪丝的清单
         self.browser.get(self.live_server_url)
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertNotIn('make a fly', page_text)
+
         # 弗朗西斯输入一个新待办事项，新建一个清单
         # 他不像伊迪丝那样兴趣盎然
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Buy milk')
         inputbox.send_keys(Keys.ENTER)
+
+        time.sleep(1)
+
         # 弗朗西斯获得了他的唯一URL
         francis_list_url = self.browser.current_url
 
         self.assertRegex(francis_list_url, '/lists/.+')
         self.assertNotEqual(francis_list_url, edith_list_url)
+
         # 这个页面还是没有伊迪丝的清单
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertIn('Buy milk', page_text)
+
+
         # 两人都很满意，去睡觉了
 
