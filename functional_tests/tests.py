@@ -14,11 +14,12 @@ from selenium.webdriver.support import expected_conditions
 class NewVisitorTest(StaticLiveServerTestCase):
 
     @classmethod
-    def setUpClass(cls): # ➊
-        for arg in sys.argv: # ➋
-            if 'liveserver' in arg: # ➌
-                cls.server_url = 'http://' + arg.split('=')[1] # ➍
-                return # ➎
+    def setUpClass(cls):
+        for arg in sys.argv:
+            if 'liveserver' in arg:
+                cls.server_url = 'http://' + arg.split('=')[1]
+                cls.live_server_url = ''
+                return
         super().setUpClass()
         cls.server_url = cls.live_server_url
 
@@ -111,7 +112,6 @@ class NewVisitorTest(StaticLiveServerTestCase):
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertIn('Buy milk', page_text)
-
 
         # 两人都很满意，去睡觉了
 
