@@ -21,9 +21,6 @@ from lists import views as myapp_views
 urlpatterns = [
 
     re_path(r'^$', myapp_views.home_page),
-    re_path(r'^lists/(\d+)/$', myapp_views.view_list),
-    re_path(r'^lists/(\d+)/add_item$', myapp_views.add_item),
-    re_path(r'^lists/new$', myapp_views.new_list),
     # path('admin/', admin.site.urls),
     re_path(r'^lists/', include('lists.urls')),
 
