@@ -18,7 +18,7 @@ from django.urls import path,re_path
 from . import views as myapp_views
 
 urlpatterns = [
-    re_path(r'^(\d+)/$', myapp_views.view_list),
-    re_path(r'^new$', myapp_views.new_list),
+    re_path(r'^(\d+)/$', myapp_views.view_list, name='view_list'),
+    re_path(r'^new$', myapp_views.new_list, name='new_list'),
 
 ]
