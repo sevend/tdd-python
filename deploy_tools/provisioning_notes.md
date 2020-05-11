@@ -19,8 +19,8 @@ sudo pip3 install virtualenv
 假设有用户账户，家目录为/home/username
 /home/username
 └─ sites
-└─ SITENAME
-├─ database
-├─ source
-├─ static
-└─ virtualenv
+    └─ SITENAME
+        ├─ database
+        ├─ source
+        ├─ static
+        └─ virtualenv
