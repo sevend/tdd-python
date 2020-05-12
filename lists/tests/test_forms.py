@@ -7,7 +7,7 @@ class ItemFormTest(TestCase):
 
     def test_form_renders_text_input(self):
         form = ItemForm()
-        self.fail(form.as_p())
+        # self.fail(form.as_p())
 
     def test_form_item_input_has_placeholder_and_css_classes(self):
         form = ItemForm()
