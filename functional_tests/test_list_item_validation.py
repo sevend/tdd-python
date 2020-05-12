@@ -39,6 +39,7 @@ class ItemValidationTest(FunctionalTest):
         self.check_for_row_in_list_table('1: Buy milk')
         self.check_for_row_in_list_table('2: Make tea')
         
+        
     def test_cannot_add_duplicate_items(self):
         # 伊迪丝访问首页，新建一个清单
         self.browser.get(self.server_url)
