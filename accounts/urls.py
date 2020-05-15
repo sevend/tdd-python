@@ -15,9 +15,10 @@ Including another URLconf
 """
 
 from django.urls import path,re_path
+from django.contrib.auth import logout
 from . import views
 
 urlpatterns = [
     re_path(r'^login$', views.persona_login, name='persona_login'),
-
+    re_path(r'^logout$', logout, {'next_page': '/'}, name='logout'),
 ]
